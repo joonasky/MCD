@@ -27,3 +27,15 @@
 *.exe
 *.out
 *.app
+
+#plotit yms.
+*.png
+*.tex
+*.aux
+*.log
+*.bib
+*.dvi
+*.blg
+*.bbl
+*.gz
+*.toc
