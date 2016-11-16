@@ -18,13 +18,14 @@ def plotPic(fname,T):
     (m,b)=np.polyfit(E,P,1)
     yp = np.polyval([m,b],E)
 
+    plt.figure(T)
     plt.plot(E,P,label='data')
     plt.plot(E,yp,label='sovitus %f' %m)
     plt.title(u'ln(P(x)) Ei/T:n funktiona kun T=%d' %T)
     plt.xlabel('-Ei/T')
     plt.ylabel('-ln(P(x))')
     plt.legend(loc=4)
-    plt.show()
+    plt.savefig("../pics/probT%d.png" %T)
 
 plotPic('../run/t2prob.txt',2.0)
 plotPic('../run/t5prob.txt',5.0)

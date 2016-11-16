@@ -7,16 +7,17 @@ def plotPic(name,temperature):
     y = np.loadtxt(name)
     x = np.arange(len(y))
 
-    (m,b)=np.polyfit(x[5000:],y[5000:],1)
+    (m,b)=np.polyfit(x[50000:],y[50000:],1)
     yp = np.polyval([m,b],x)
 
+    plt.figure(temperature)
     plt.plot(x,y,label='data')
     plt.plot(x,yp,label='sovitus %f' %m)
     plt.title(u'hiukkasen keskimääräinen neliöpoikkeama ajan funktiona kun T=%d' %temperature)
     plt.xlabel('t')
     plt.ylabel('<x^2>')
     plt.legend(loc=4)
-    plt.show()
+    plt.savefig("../pics/distanceT%d.png" %temperature)
 
 plotPic('../run/T2pitka.txt',2)
 plotPic('../run/T5pitka.txt',5)

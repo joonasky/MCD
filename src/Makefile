@@ -1,5 +1,5 @@
 all: mtfort90.o main
-	gfortran MCD.o mtfort90.o -o MCD
+	gfortran MCD.o mtfort90.o -o MCD -O2
 	gfortran MCDM.o mtfort90.o -o MCDM
 
 main: MCD.f90 MCDM.f90

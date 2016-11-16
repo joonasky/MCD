@@ -11,7 +11,7 @@ implicit none
 
   integer(kind=ik),dimension(Esize)  :: Px
   integer(kind=ik)                   :: Nhalf, t, nsample, Temperature
-  integer                            :: i, x, x0, dir, ios
+  integer                            :: i, x, x0, dir, ios, distance
   
   real(kind=rk)                      :: J, eps, epsb, xt
   real(kind=rk),dimension(Esize)     :: E
@@ -43,6 +43,7 @@ implicit none
     !STEP 2
     x0 = ceiling(grnd()*Esize) ! 1-Esize
     x = x0
+    distance = 0
 
     do t = 0,tmax
       
@@ -60,6 +61,7 @@ implicit none
       !jump with probability J
       if (J > grnd()) then
         x = x + dir
+        distance = distance + dir
         if (x < 1) then
            x = Esize
         else if (x > Esize) then
@@ -70,7 +72,7 @@ implicit none
       
       !STEP 4
       
-      xt2(t) = xt2(t) + (x-x0)**2
+      xt2(t) = xt2(t) + (distance)**2
       
     end do
     
