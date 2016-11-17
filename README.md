@@ -18,6 +18,13 @@ $ chmod +x runner*
 ```
 Scriptit voi ajaa eri terminaaleissa niin tietokone jossa on monta ydintä voi ajaa simulaatiot läpi tehokkaammin.
 Kutsun tätä *teekkarin paralelisoinniksi*
+
+Plotit voi tuottaa komennoilla
+```sh
+$ python plotdist.py
+$ python plotprob.py
+$ python plotpx.py
+```
 ### SISÄLTÖ
 - Kansio **src/** sisältää lähdekoodit. 
 - Kansio  **run/** sisältää ohjelman ajamisen tuottaman datan.
