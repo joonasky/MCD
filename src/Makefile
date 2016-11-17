@@ -1,13 +1,7 @@
-all: mtfort90.o main
-	gfortran MCD.o mtfort90.o -o MCD -O2
-	gfortran MCDM.o mtfort90.o -o MCDM
-
-main: MCD.f90 MCDM.f90
-	gfortran -c MCD.f90
-	gfortran -c MCDM.f90
-
-mtfort90.o: mtfort90.f90
-	gfortran -c mtfort90.f90
+all:
+	gfortran -O3 mtfort90.f90 MCD.f90 -o MCD
+	gfortran -O3 mtfort90.f90 MCDM.f90 -o MCDM
+	gfortran -O3 theorvals.f90 -o tvals
 
 clean:
-	rm MCD MCDM MCD.o MCDM.o mtmod.mod mtfort90.o
+	rm MCD MCDM tvals mtmod.mod

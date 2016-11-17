@@ -10,7 +10,7 @@ def plotPic(fname,T):
             index.append(i)
     P = np.delete(P,index)
     E = np.delete(E,index)
-    P = -np.log(P/10000.0)
+    P = -np.log(P/100.0)
     E = -E/T
 #    P = P[:3000]
 #    E = E[:3000]

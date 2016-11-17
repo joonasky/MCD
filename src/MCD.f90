@@ -7,16 +7,24 @@ implicit none
   integer,parameter :: right = 1, left = -1, Esize = 100, &
                        tmax = 100000, nsamplemax = 100000
   
-  character(len=80)                  :: message, arg, fname,fname2
+  character(len=80)                 :: message, arg, fname,fname2
 
-  integer(kind=ik),dimension(Esize)  :: Px
-  integer(kind=ik)                   :: Nhalf, t, nsample, Temperature
-  integer                            :: i, x, x0, dir, ios, distance
+  integer(kind=ik),dimension(Esize) :: Px
+  integer(kind=ik)                  :: Nhalf, t, nsample, Temperature
+  integer                           :: i, x, x0, dir, ios, distance, iarg
   
-  real(kind=rk)                      :: J, eps, epsb, xt
-  real(kind=rk),dimension(Esize)     :: E
-  real(kind=rk),dimension(0:tmax)    :: xt2
+  real(kind=rk)                     :: J, eps, epsb, xt
+  real(kind=rk),dimension(Esize)    :: E
+  real(kind=rk),dimension(0:tmax)   :: xt2
 
+
+  iarg=command_argument_count()
+  if (iarg<3) then
+     call get_command_argument(0,arg)
+     write(0,'(a,a,a,/,"             1            2               3")') &
+          'usage: ',trim(arg), ' T - filename for x(t)^2 - filename for P(x)'
+     stop
+  end if
   call getarg(1,arg)
   read(arg,*) Temperature
   call getarg(2,fname)
